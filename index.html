@@ -5,188 +5,302 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rolê Burger - Lanchonete & Delivery</title>
     <style>
+        :root {
+            --cor-fundo: #0a0a0a;
+            --cor-card: #141414;
+            --cor-borda: #333333;
+            --cor-borda-foto: #ffffff; /* Moldura branca idêntica ao seu modelo */
+            --cor-primaria: #ff9f1c; 
+            --cor-texto: #ffffff;
+            --cor-texto-mutado: #a0a0a0;
+            --cor-whatsapp: #25d366;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: #0d0d0d;
-            color: #ffffff;
-            line-height: 1.6;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.5;
         }
 
-        header {
-            background-color: #1a1a1a;
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 3px solid #ffcc00;
-        }
-
-        .logo-container {
+        /* Container do Banner Animado */
+        .header-video-container {
             width: 100%;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px 15px 10px;
         }
 
-        /* Mantém o formato original do seu Banner GIF */
-        .logo-container img {
+        /* AJUSTE DO BANNER: Sem círculos ou cortes, exibe o arquivo inteiro */
+        .video-banner {
             width: 100%;
             height: auto;
+            border-radius: 16px;
             display: block;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
         }
 
-        h1 {
-            color: #ffcc00;
-            font-size: 2.2rem;
+        /* Container Principal */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 10px 15px 90px;
+        }
+
+        h2 {
+            color: var(--cor-texto);
+            font-size: 1.3rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 20px 10px;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .secao-titulo {
-            font-size: 1.8rem;
-            color: #ffffff;
-            margin-bottom: 20px;
-            border-left: 5px solid #ffcc00;
-            padding-left: 10px;
-            text-transform: uppercase;
-        }
-
-        .cardapio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background-color: #1a1a1a;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #333;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #ffcc00;
-        }
-
-        /* Exibe a foto do tamanho exato do arquivo, sem cortes */
-        .card-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-bottom: 2px solid #333;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .card-titulo {
-            font-size: 1.4rem;
-            color: #ffcc00;
-            margin-bottom: 10px;
-        }
-
-        .card-descricao {
-            font-size: 0.95rem;
-            color: #cccccc;
-            margin-bottom: 15px;
-        }
-
-        .card-preco {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-        /* Botão Flutuante do WhatsApp */
-        .btn-whatsapp {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
+            margin: 35px 0 20px;
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            z-index: 1000;
         }
 
-        .btn-whatsapp:hover {
-            transform: scale(1.05);
-            background-color: #20ba5a;
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cor-primaria), transparent);
+        }
+
+        /* Grid de Opções (Destaques) */
+        .grid-destaques {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .card-destaque {
+            background-color: var(--cor-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            text-align: center;
+            padding: 15px 15px 20px;
+            transition: transform 0.2s;
+        }
+
+        /* AJUSTE DAS FOTOS: Respeita o tamanho real e proporções de cada imagem sem cortar */
+        .card-destaque img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            border-radius: 14px;
+            border: 3px solid var(--cor-borda-foto); 
+            margin: 0 auto 15px;
+            display: block;
+        }
+
+        .card-destaque h3 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+            color: var(--cor-texto);
+        }
+
+        .card-destaque p {
+            color: var(--cor-texto-mutado);
+            font-size: 0.9rem;
+            padding: 0 10px;
+        }
+
+        /* Grid do Cardápio */
+        .grid-cardapio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .item-cardapio {
+            background-color: var(--cor-card);
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px solid var(--cor-borda);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .item-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .item-topo h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .preco {
+            color: var(--cor-primaria);
+            font-weight: 700;
+            font-size: 1.1rem;
+            white-space: nowrap;
+        }
+
+        .item-cardapio p {
+            color: var(--cor-texto-mutado);
+            font-size: 0.85rem;
+        }
+
+        .footer-info {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--cor-texto-mutado);
+            font-size: 0.85rem;
+        }
+
+        /* Botão do WhatsApp Fixado */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--cor-whatsapp);
+            color: #ffffff;
+            padding: 14px 30px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            width: calc(100% - 40px);
+            max-width: 340px;
         }
 
         .btn-whatsapp img {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 1.8rem; }
-            .secao-titulo { font-size: 1.5rem; }
+        @media (min-width: 768px) {
             .btn-whatsapp {
-                bottom: 20px;
-                right: 20px;
-                padding: 12px 20px;
-                font-size: 0.9rem;
+                left: auto;
+                right: 25px;
+                transform: none;
+                width: auto;
+            }
+            .grid-cardapio {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="./imagem/logo.gif" alt="Rolê Burger Banner">
-        </div>
-        <h1>Rolê Burger - Lanchonete & Delivery</h1>
-    </header>
-
-    <div class="container">
-        <h2 class="secao-titulo">Nossas Opções</h2>
-        
-        <div class="cardapio-grid">
-            <div class="card">
-                <img src="./imagem/combo.png" alt="Combo Rolê Burger" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-titulo">Combo Rolê Burger</h3>
-                    <p class="card-descricao">Suculento hambúrguer artesanal acompanhado de batata frita crocante e refrigerante gelado.</p>
-                    <p class="card-preco">R$ 34,90</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="./imagem/lanche.jpg" alt="Lanche Avulso Rolê Burger" class="card-img">
-                <div class="card-body">
-                    <h3 class="card-titulo">Lanche Avulso Rolê Burger</h3>
-                    <p class="card-descricao">Pão selado na manteiga, blend artesanal de 150g, queijo derretido e nosso molho especial.</p>
-                    <p class="card-preco">R$ 24,90</p>
-                </div>
-            </div>
-        </div>
+    <div class="header-video-container">
+        <img class="video-banner" src="./imagem/logo.gif" alt="Rolê Burger - Lanchonete & Delivery">
     </div>
 
-    <a href="https://wa.me/5551999999999" class="btn-whatsapp" target="_blank">
+    <main class="container">
+        
+        <h2>Nossas Opções</h2>
+        <div class="grid-destaques">
+            
+            <div class="card-destaque">
+                <img src="./imagem/combo.png" alt="Combo Rolê Burger">
+                <h3>Combo</h3>
+                <p>Lanche, Porção de Batata e Refrigerante</p>
+            </div>
+            
+            <div class="card-destaque">
+                <img src="./imagem/lanche.jpg" alt="Lanche Avulso Rolê Burger">
+                <h3>Apenas Lanche</h3>
+                <p>Um suculento Lanche de Hambúrguer Artesanal</p>
+            </div>
+
+        </div>
+
+        <h2>Hambúrgueres Artesanais</h2>
+        <div class="grid-cardapio">
+            <div class="item-cardapio">
+                <div class="item-topo">
+                    <h3>X-BURGUER</h3>
+                    <span class="preco">R$ 13,90</span>
+                </div>
+                <p>Pão de hambúrguer, hambúrguer artesanal 90g, presunto, duplo queijo prato e maionese.</p>
+            </div>
+            <div class="item-cardapio">
+                <div class="item-topo">
+                    <h3>X-SALADA</h3>
+                    <span class="preco">R$ 15,90</span>
+                </div>
+                <p>Pão de hambúrguer, hambúrguer artesanal 90g, presunto, queijo prato, alface, tomate e maionese.</p>
+            </div>
+            <div class="item-cardapio">
+                <div class="item-topo">
+                    <h3>X-EGG</h3>
+                    <span class="preco">R$ 16,90</span>
+                </div>
+                <p>Pão de hambúrguer, hambúrguer artesanal 90g, presunto, queijo prato, ovo, alface, tomate e maionese.</p>
+            </div>
+            <div class="item-cardapio">
+                <div class="item-topo">
+                    <h3>X-BACON</h3>
+                    <span class="preco">R$ 18,90</span>
+                </div>
+                <p>Pão de hambúrguer, hambúrguer artesanal 90g, presunto, queijo prato, bacon, alface, tomate e maionese.</p>
+            </div>
+        </div>
+
+        <h2>Porções</h2>
+        <div class="grid-cardapio">
+            <div class="item-cardapio">
+                <div class="item-topo">
+                    <h3>PORÇÃO DE FRITAS</h3>
+                    <span class="preco">R$ 25,90</span>
+                </div>
+                <p>500g de batatas fritas sequinhas com cheddar e bacon.</p>
+            </div>
+            <div class="item-cardapio">
+                <div class="item-topo">
+                    <h3>ANÉIS DE CEBOLA</h3>
+                    <span class="preco">R$ 27,90</span>
+                </div>
+                <p>500g de anéis de cebola fritinhos com maionese da casa.</p>
+            </div>
+            <div class="item-cardapio">
+                <div class="item-topo">
+                    <h3>FRANGO FRITO NO BALDE</h3>
+                    <span class="preco">R$ 44,90</span>
+                </div>
+                <p>1KG de frango frito no balde - acompanha pimenta e maionese da casa.</p>
+            </div>
+        </div>
+
+        <h2>Bebidas</h2>
+        <div class="grid-cardapio">
+            <div class="item-cardapio">
+                <div class="item-topo">
+                    <h3>REFRIGERANTE LATA 350ML</h3>
+                    <span class="preco">R$ 5,00</span>
+                </div>
+                <p>Consulte os sabores disponíveis no momento do pedido.</p>
+            </div>
+        </div>
+
+        <div class="footer-info">
+            <p>© Rolê Burger - Todos os direitos reservados.</p>
+        </div>
+
+    </main>
+
+    <a href="https://wa.me/5500000000000?text=Olá!%20Vi%20o%20cardápio%20no%20site%20e%20gostaria%20de%20fazer%20um%20pedido." class="btn-whatsapp" target="_blank">
         <img src="./imagem/whatsapp.png" alt="WhatsApp">
         Faça seu Pedido
     </a>
