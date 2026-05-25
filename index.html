@@ -20,19 +20,24 @@
 
         header {
             background-color: #1a1a1a;
-            padding: 20px;
+            padding: 20px 0; /* Espaçamento vertical para o banner respirar */
             text-align: center;
             border-bottom: 3px solid #ffcc00;
         }
 
         .logo-container {
-            margin-bottom: 10px;
+            width: 100%;
+            max-width: 1000px; /* Define um limite máximo lindo para não estourar em telas gigantes */
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
+        /* AJUSTE DO BANNER (image_56.png): Agora ele ocupa o espaço real e retangular dele */
         .logo-container img {
-            max-width: 150px;
+            width: 100%;
             height: auto;
-            border-radius: 50%;
+            display: block;
+            border-radius: 0; /* Removeu o círculo para mostrar o banner inteiro */
         }
 
         h1 {
@@ -40,6 +45,7 @@
             font-size: 2.2rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            padding: 20px 10px;
         }
 
         .container {
@@ -76,11 +82,13 @@
             border-color: #ffcc00;
         }
 
+        /* AJUSTE DAS FOTOS DOS LANCHES (image_54.png e image_55.png): */
         .card-img {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
+            height: auto; /* Deixa o navegador decidir a altura com base na foto */
+            display: block; /* Garante que a imagem se comporte bem */
             border-bottom: 2px solid #333;
+            /* IMPORTANTE: Removi o object-fit:cover e o aspect-ratio que cortavam a foto */
         }
 
         .card-body {
@@ -97,8 +105,7 @@
             font-size: 0.95rem;
             color: #cccccc;
             margin-bottom: 15px;
-            height: 45px;
-            overflow: hidden;
+            /* Deixa a descrição respirar, se o texto for maior, o card cresce */
         }
 
         .card-preco {
@@ -152,7 +159,7 @@
 
     <header>
         <div class="logo-container">
-            <img src="imagem/logo.gif" alt="Rolê Burger Logo">
+            <img src="imagem/logo.gif" alt="Rolê Burger Banner">
         </div>
         <h1>Rolê Burger - Lanchonete & Delivery</h1>
     </header>
